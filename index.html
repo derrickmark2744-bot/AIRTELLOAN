@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#4b168b"><title>Uganda Loan Demo</title>
+<style>
+:root{--purple:#5b1ca2;--red:#e51d35;--blue:#075a9d;--ink:#252936;--muted:#727987;--line:#e0e2e8}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#f7f8fc}
+button,input,select{font:inherit}button{cursor:pointer}
+.screen{display:none;min-height:100vh;padding:28px 16px 40px}.screen.active{display:flex;flex-direction:column;align-items:center}
+.splash{justify-content:center;color:white;text-align:center;overflow:hidden;position:relative;background:radial-gradient(ellipse at 15% 50%,#a90078 0,#5a168f 35%,#22083f 75%)}
+.splash:before{content:"";position:absolute;width:62vw;height:130vh;left:-25vw;top:-15vh;border-radius:50%;border-right:3px solid #ef168f;transform:rotate(22deg);box-shadow:14px 0 25px #df168955,25px 0 45px #df168933}
+.splash-inner{position:relative;z-index:1}.brand{font-size:46px;font-weight:850;letter-spacing:-2px}.brand .air{color:#ff4056}.brand .tel{color:#fff}.tagline{font-size:18px;font-weight:700;margin-top:12px}.smallline{font-size:13px;color:#e7d7f4;margin-top:14px}
+.container{width:min(100%,510px);margin:auto}.header{text-align:center;margin:8px 0 24px}.wordmark{font-size:38px;font-weight:850;letter-spacing:-1.5px;color:var(--red)}.wordmark span{color:#262936}.header p{margin:7px 0 4px;color:#555d6c;font-weight:650}.header small{color:#7a8190}
+.disclaimer{background:#fff3d7;border:1px solid #efd99d;color:#71500b;border-radius:12px;padding:12px 14px;font-size:12px;line-height:1.5;margin-bottom:15px}
+.card{background:white;border-radius:28px;padding:26px;box-shadow:0 12px 38px #15213b0d}
+.pill{display:block;width:max-content;margin:0 auto 13px;padding:5px 10px;border-radius:30px;background:#fff0f0;color:#a9001b;font-size:11px;font-weight:800}
+h1{text-align:center;font-size:23px;margin:0 0 8px}.sub{text-align:center;color:var(--muted);font-size:14px;margin:0 0 22px;line-height:1.5}
+label{display:block;font-size:13px;font-weight:700;margin:15px 0 7px}
+input,select{width:100%;height:49px;border:1px solid var(--line);border-radius:11px;padding:0 13px;background:#fff;color:var(--ink);outline:none;font-size:14px}
+input:focus,select:focus{border-color:var(--purple);box-shadow:0 0 0 3px #5b1ca21a}
+.hint{font-size:11px;color:var(--muted);line-height:1.45;margin-top:6px}
+.primary{width:100%;border:0;border-radius:40px;padding:15px 18px;margin-top:22px;background:linear-gradient(100deg,#8a2be2,#3920b9);color:white;font-weight:750;font-size:15px}
+.secondary{width:100%;border:0;border-radius:40px;padding:14px;margin-top:10px;background:#f0edf6;color:#5b1ca2;font-weight:700}
+.foot{text-align:center;color:#858b98;font-size:11px;margin:17px 0 0;line-height:1.5}
+.estimate{margin:18px 0 0;padding:17px;border-radius:15px;background:#edf5ff;text-align:center}.estimate small{color:#60728a}.estimate strong{display:block;color:var(--blue);font-size:30px;margin:5px}
+.success{text-align:center}.check{width:82px;height:82px;border-radius:50%;background:#19b66b;color:white;font-size:48px;line-height:82px;margin:8px auto 18px}
+.summary{background:#f6f7fa;border-radius:15px;padding:18px;margin-top:17px;text-align:left;font-size:14px}.summary div{display:flex;justify-content:space-between;gap:12px;padding:9px 0}.summary .total{border-top:1px solid #ddd;font-weight:800;color:#075a9d}
+.consent{display:flex;align-items:flex-start;gap:10px;margin-top:17px;font-size:12px;line-height:1.5;color:#555d6c}.consent input{width:18px;height:18px;flex:0 0 18px;margin:1px 0 0}
+button:disabled{opacity:.6;cursor:wait}
+@media(max-width:430px){.card{padding:22px}.brand{font-size:40px}}
+</style>
+</head>
+<body>
+<section id="splash" class="screen splash active"><div class="splash-inner"><div class="brand"><span class="tel">Airtel</span><span class="air"> Money</span></div><div class="tagline">Uganda · Loan application demo</div><div class="smallline">Independent demonstration — not an Airtel service</div><button class="primary" style="max-width:260px;background:#fff;color:#4b168b" onclick="show('apply')">Get started</button></div></section>
+
+<section id="apply" class="screen"><main class="container">
+<header class="header"><div class="wordmark">Airtel<span> Money</span></div><p>Uganda</p><small>Quick loan application prototype</small></header>
+<div class="disclaimer"><b>Independent demo:</b> This website is not operated by Airtel and does not provide loans or financial services. The result is simulated. Never enter your Airtel Money PIN. If you submit this demo form, the listed application details will be sent to the website operator through Telegram.</div>
+<div class="card"><span class="pill">DEMO APPLICATION</span><h1>Apply for a Loan</h1><p class="sub">Complete the sample form to preview the application.</p>
+<form id="loanForm">
+<label for="fullname">Full name</label><input id="fullname" autocomplete="name" placeholder="Enter your full name" maxlength="80" required>
+<label for="phone">Uganda mobile number</label><input id="phone" type="tel" inputmode="tel" placeholder="+256 7XX XXX XXX" pattern="(\+256|0)7[0-9]{8}" required><div class="hint">Example: +256 712 345 678 or 0712 345 678.</div>
+<label for="occupation">What do you do for a living?</label><select id="occupation" required><option value="">Select occupation</option><option>Employed</option><option>Self-employed</option><option>Business owner</option><option>Farmer</option><option>Student</option><option>Other</option></select>
+<label for="income">Monthly income (UGX)</label><input id="income" type="number" min="1" placeholder="Enter monthly income" required>
+<label for="amount">Requested loan amount (UGX)</label><input id="amount" type="number" min="10000" max="5000000" step="1000" value="100000" required>
+<label for="period">Repayment period</label><select id="period"><option value="30">30 days</option><option value="60">60 days</option><option value="90">90 days</option></select>
+<label for="payout">Preferred payout destination</label><select id="payout" required><option value="">Select payout method</option><option>Airtel Money (demo selection)</option><option>Other mobile money (demo selection)</option></select>
+<label class="consent"><input id="consent" type="checkbox" required><span>I agree that the details above may be sent to the website operator via Telegram for this demo application. I understand this is not an official Airtel service or a real loan application.</span></label>
+<div class="estimate"><small>Illustrative estimate only · sample 5% fee</small><strong id="repayment">UGX 105,000</strong><small>Estimated total repayment</small></div>
+<button class="primary" id="submitBtn" type="submit">Submit demo application</button>
+<p id="formError" class="hint" role="alert"></p>
+</form><p class="foot">Do not submit highly sensitive information. Never provide a PIN, password, OTP or identity document in this demo.</p></div>
+</main></section>
+
+<section id="login" class="screen"><main class="container">
+<header class="header" style="margin-top:50px"><div class="wordmark">Airtel<span> Money</span></div><p>Uganda</p></header>
+<div class="disclaimer"><b>Demo login only.</b> Do not enter your real Airtel Money PIN or password. Use the sample code shown below.</div>
+<div class="card"><span class="pill">DEMO LOGIN</span><h1>Welcome</h1><p class="sub">Continue to view your sample application result.</p>
+<form id="loginForm"><label for="loginPhone">Uganda mobile number</label><input id="loginPhone" type="tel" placeholder="+256 7XX XXX XXX" required><label for="demoCode">Demo access code</label><input id="demoCode" type="password" inputmode="numeric" placeholder="Demo code: 123456" required><div class="hint">Demo code: 123456. This is not your Airtel PIN.</div><button class="primary" type="submit">Continue</button></form><button class="secondary" onclick="show('apply')">Back to application</button></div>
+</main></section>
+
+<section id="result" class="screen"><main class="container">
+<header class="header"><div class="wordmark">Airtel<span> Money</span></div><p>Uganda</p></header>
+<div class="card success"><div class="check">✓</div><span class="pill">SIMULATED RESULT — NOT AN APPROVAL</span><h1>Demo application completed</h1><p class="sub">This is a preview only. No lender assessed your application and no loan has been approved.</p>
+<div class="estimate"><small>Requested amount</small><strong id="resultAmount">UGX 100,000</strong><small id="resultPeriod">30-day sample period</small></div>
+<div class="summary"><div><span>Sample loan amount</span><b id="sumAmount">UGX 100,000</b></div><div><span>Sample fee (5%)</span><b id="sumFee">UGX 5,000</b></div><div><span>Repayment period</span><b id="sumPeriod">30 days</b></div><div class="total"><span>Illustrative total</span><b id="sumTotal">UGX 105,000</b></div></div>
+<p class="foot">No money can be withdrawn or deposited from this demo. Real lending and payment services require authorized providers and applicable approvals.</p><button class="primary" onclick="show('apply')">Start another demo</button></div>
+</main></section>
+
+<script>
+const $=id=>document.getElementById(id);
+const fmt=n=>'UGX '+Math.round(n).toLocaleString('en-UG');
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));window.scrollTo({top:0,behavior:'smooth'})}
+$('amount').addEventListener('input',()=>{$('repayment').textContent=fmt((Number($('amount').value)||0)*1.05)});
+$('loanForm').addEventListener('submit',async e=>{
+ e.preventDefault();const form=e.target;if(!form.reportValidity())return;
+ let p=$('phone').value.replace(/\s/g,'');if(p.startsWith('0'))p='+256'+p.slice(1);
+ if(!/^\+2567\d{8}$/.test(p)){alert('Please enter a valid Uganda mobile number.');return}
+ const payload={name:$('fullname').value.trim(),phone:p,occupation:$('occupation').value,income:Number($('income').value),amount:Number($('amount').value),period:Number($('period').value),payout:$('payout').value,consent:$('consent').checked};
+ const btn=$('submitBtn');btn.disabled=true;btn.textContent='Sending demo application…';$('formError').textContent='';
+ try{
+  const response=await fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  const result=await response.json();if(!response.ok)throw new Error(result.error||'Could not send your application.');
+  localStorage.setItem('demoPhone',p);show('login');
+ }catch(err){$('formError').textContent=err.message+' Please try again later.'}
+ finally{btn.disabled=false;btn.textContent='Submit demo application'}
+});
+$('loginForm').addEventListener('submit',e=>{e.preventDefault();let p=$('loginPhone').value.replace(/\s/g,'');if(p.startsWith('0'))p='+256'+p.slice(1);if(!/^\+2567\d{8}$/.test(p)){alert('Please enter a valid Uganda mobile number.');return}if($('demoCode').value!=='123456'){alert('For this demo only, enter 123456. Never use your real Airtel PIN.');return}const a=Number($('amount').value),fee=a*.05,total=a+fee; $('resultAmount').textContent=fmt(a);$('resultPeriod').textContent=$('period').value+'-day sample period';$('sumAmount').textContent=fmt(a);$('sumFee').textContent=fmt(fee);$('sumPeriod').textContent=$('period').value+' days';$('sumTotal').textContent=fmt(total);show('result')});
+$('loginPhone').addEventListener('focus',()=>{if(!$('loginPhone').value)$('loginPhone').value=localStorage.getItem('demoPhone')||''});
+</script>
+</body></html>
